@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="login.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+    <main>
+      <div class="logo">
+        <img src="../server/img/logo.png" alt="logo">
+      </div>
+      <div class="login-card">
+        <form>
+          <h3>Login</h3>
+          <label for="email">Email</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Type your email"
+            required
+          />
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Type your password"
+            required
+          />
+          <button type="submit">Login</button>
+          <div class="link-container">
+            <a href="register.html">Don't have account? Register</a>
+          </div>
+        </form>
+        
+    </main>
+
+  </body>
+</html>
