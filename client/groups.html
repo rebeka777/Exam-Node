@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groups</title>
+    <script src="groups.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      #bill-form {
+        padding: 5px;
+        border-radius: 10px;
+      }
+      .group {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: coral;
+      }
+      .group:first-of-type div {
+        font-weight: bolder;
+      }
+      .group:active {
+        background-color: brown;
+      }
+      #group-list {
+        display: flex;
+        gap: 2rem;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+      }
+
+      h5 {
+        text-align: center;
+        font-weight: lighter;
+        margin-bottom: 20px;
+      }
+      #add-group-form {
+        text-align: center;
+        margin: 30px;
+      }
+      #bills-and-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      #bills-container {
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        padding: 5px;
+      }
+      h6 {
+        font-weight: lighter;
+        font-style: italic;
+        text-align: center;
+      }
+      .logo {
+        display: flex;
+        justify-content: center;
+        margin: 50px;
+      }
+      .logo img {
+        max-width: 90%;
+      }
+      #add-bill-btn {
+        padding: 5px 10px;
+        background-color: none;
+        border-color: black;
+        font-weight: bolder;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="logo">
+        <img src="../server/img/logo2.png" alt="logo" />
+      </div>
+      <div class="groups-container" id="groups-container">
+        <h5>Select Your Group</h5>
+        <h6>
+          Add group by inserting ID or click on already added group to see bills
+        </h6>
+        <form id="add-group-form">
+          <input
+            type="text"
+            id="group-id-input"
+            placeholder="Enter Group ID"
+            required
+          />
+          <input type="submit" value="Add Group" />
+        </form>
+        <div id="group-list">
+          <div id="bills-and-form">
+            <div id="bills-container"></div>
+            <div id="bill-form">
+              <form id="create-bill-form">
+                <h3>Add bill</h3>
+                <label for="amount-input">Amount:</label>
+                <input
+                  type="number"
+                  id="amount-input"
+                  placeholder="Enter Amount"
+                  step="0.01"
+                  required
+                />
+                <label for="description-input">Description:</label>
+                <input
+                  type="text"
+                  id="description-input"
+                  placeholder="Enter Description"
+                  required
+                />
+                <input type="submit" value="Add" id="add-bill-btn" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
