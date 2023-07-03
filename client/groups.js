@@ -14,7 +14,7 @@ const getGroups = async () => {
     if (response.ok) {
       return await response.json();
     } else {
-      console.log('Can not fetch groups');
+      alert('Can not get groups');
       return [];
     }
   } catch (err) {
@@ -61,7 +61,6 @@ const createGroupElement = (groupData) => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
 
         const billsContainer = document.getElementById('bills-container');
         billsContainer.innerHTML = '';
@@ -69,16 +68,13 @@ const createGroupElement = (groupData) => {
         data.forEach((bill) => {
           const billDiv = document.createElement('div');
           billDiv.classList.add('bill');
-          billDiv.textContent = `Amount: ${bill.amount}, Description: ${bill.description}`;
+          billDiv.textContent = `ID: ${bill.id}  Amount: ${bill.amount} Eur Description: ${bill.description}`;
           billsContainer.appendChild(billDiv);
         });
 
         const createBillForm = document.getElementById('create-bill-form');
         createBillForm.style.display = 'block';
         createBillForm.dataset.groupId = groupData.groups_id;
-
-        const groupIdElement = document.getElementById('group-id');
-        groupIdElement.textContent = `Group ID: ${groupData.groups_id}`;
       } else {
         alert('Failed to get bills');
       }
@@ -138,7 +134,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         const billsContainer = document.getElementById('bills-container');
         billsContainer.innerHTML = '';
 
-        const updatedResponse = await fetch(`${API_BASE}/bills/${groupId}`, {
+        const allBills = await fetch(`${API_BASE}/bills/${groupId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -146,14 +142,13 @@ window.addEventListener('DOMContentLoaded', async () => {
           },
         });
 
-        if (updatedResponse.ok) {
-          const updatedData = await updatedResponse.json();
-          console.log(updatedData);
+        if (allBills.ok) {
+          const updatedData = await allBills.json();
 
           updatedData.forEach((bill) => {
             const billDiv = document.createElement('div');
             billDiv.classList.add('bill');
-            billDiv.textContent = `Amount: ${bill.amount}, Description: ${bill.description}`;
+            billDiv.textContent = `ID: ${bill.id} Amount: ${bill.amount} Description: ${bill.description}`;
             billsContainer.appendChild(billDiv);
           });
         } else {
